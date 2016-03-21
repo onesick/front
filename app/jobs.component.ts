@@ -1,13 +1,13 @@
 import {Component, OnInit} from 'angular2/core';
 
 @Component({
-    selector: 'home',
+    selector: 'jobs',
     template: `
-    <h1>Home page</h1>
+    <h1>Jobs</h1>
     `
 })
 
-export class HomeComponent implements OnInit {
+export class JobsComponent implements OnInit {
 
     constructor() { }
 

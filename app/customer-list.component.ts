@@ -5,7 +5,7 @@ import {CustomerService} from './customer.service';
 
 @Component({
     selector: 'customer-list',
-    templateUrl: `
+    template: `
     <ul>
      <li>list1</li>
      <li>list2</li>

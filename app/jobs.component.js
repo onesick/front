@@ -11,28 +11,28 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var CustomerListComponent;
+    var JobsComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            CustomerListComponent = (function () {
-                function CustomerListComponent() {
+            JobsComponent = (function () {
+                function JobsComponent() {
                 }
-                CustomerListComponent.prototype.ngOnInit = function () { };
-                CustomerListComponent = __decorate([
+                JobsComponent.prototype.ngOnInit = function () { };
+                JobsComponent = __decorate([
                     core_1.Component({
-                        selector: 'customer-list',
-                        template: "\n    <ul>\n     <li>list1</li>\n     <li>list2</li>\n    </ul>\n    \n    "
+                        selector: 'jobs',
+                        template: "\n    <h1>Jobs</h1>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], CustomerListComponent);
-                return CustomerListComponent;
+                ], JobsComponent);
+                return JobsComponent;
             }());
-            exports_1("CustomerListComponent", CustomerListComponent);
+            exports_1("JobsComponent", JobsComponent);
         }
     }
 });
-//# sourceMappingURL=customer-list.component.js.map
+//# sourceMappingURL=jobs.component.js.map
