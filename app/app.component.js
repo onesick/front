@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './navbar.component', './customer-list.component', './home.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,21 +10,39 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, router_1, navbar_component_1, customer_list_component_1, home_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (navbar_component_1_1) {
+                navbar_component_1 = navbar_component_1_1;
+            },
+            function (customer_list_component_1_1) {
+                customer_list_component_1 = customer_list_component_1_1;
+            },
+            function (home_component_1_1) {
+                home_component_1 = home_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                 }
                 AppComponent = __decorate([
+                    router_1.RouteConfig([
+                        { path: '/', name: 'Home', component: home_component_1.HomeComponent },
+                        { path: '/customers', name: 'Customers', component: customer_list_component_1.CustomerListComponent },
+                        { path: '/*other', name: "Other", redirectTo: ['Home'] }
+                    ]),
                     core_1.Component({
-                        selector: 'app',
-                        templateUrl: 'main.html'
+                        selector: 'my-app',
+                        directives: [navbar_component_1.NavBarComponent, router_1.ROUTER_DIRECTIVES],
+                        templateUrl: "\n    <navbar></navbar>\n    <div class = \"container\">\n        <router-outlet></router-outlet>\n    </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
