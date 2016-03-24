@@ -10,7 +10,13 @@ import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
 export class NavBarComponent implements OnInit {
 
-    constructor() { }
+    constructor(private _router:Router) {
 
+     }
+     
+    isCurrentRoute(route){
+        var instruction = this._router.generate(route);
+        return this._router.isRouteActive(instruction);
+    }
     ngOnInit() { }
 }

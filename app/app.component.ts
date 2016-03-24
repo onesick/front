@@ -22,4 +22,6 @@ import {JobsComponent} from './jobs.component'
     `
 })
 
-export class AppComponent{};
+export class AppComponent{
+    
+};

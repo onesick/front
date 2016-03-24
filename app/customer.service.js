@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,35 +10,43 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, core_2;
+    var core_1, http_1, Observable_1;
     var CustomerService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-                core_2 = core_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (Observable_1_1) {
+                Observable_1 = Observable_1_1;
             }],
         execute: function() {
             CustomerService = (function () {
-                function CustomerService(http) {
-                    this.http = http;
-                    this._customersUrl = 'http://localhost:3000/api/customers';
+                function CustomerService(_http) {
+                    this._http = _http;
+                    this._customersUrl = 'http://jsonplaceholder.typicode.com/users';
                 }
                 CustomerService.prototype.getCustomers = function () {
-                    return this.http.get(this._customersUrl)
+                    return this._http.get(this._customersUrl)
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
-                CustomerService.prototype.handleError = function (error, Response) { };
+                CustomerService.prototype.handleError = function (error) {
+                    console.error(error);
+                    return Observable_1.Observable.throw(error.json().error || "Server error");
+                    // in a real world app, we may send the error to some remote logging infrastructure
+                    // instead of just logging it to the console
+                };
                 CustomerService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof core_2.Http !== 'undefined' && core_2.Http) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], CustomerService);
                 return CustomerService;
-                var _a;
             }());
             exports_1("CustomerService", CustomerService);
-            return Observable_1.Observable.throw(error.json().error || "Server error");
         }
     }
 });

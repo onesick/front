@@ -22,8 +22,13 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             }],
         execute: function() {
             NavBarComponent = (function () {
-                function NavBarComponent() {
+                function NavBarComponent(_router) {
+                    this._router = _router;
                 }
+                NavBarComponent.prototype.isCurrentRoute = function (route) {
+                    var instruction = this._router.generate(route);
+                    return this._router.isRouteActive(instruction);
+                };
                 NavBarComponent.prototype.ngOnInit = function () { };
                 NavBarComponent = __decorate([
                     core_1.Component({
@@ -31,7 +36,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         templateUrl: 'app/navbar.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], NavBarComponent);
                 return NavBarComponent;
             }());

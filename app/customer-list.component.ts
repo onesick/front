@@ -5,18 +5,16 @@ import {CustomerService} from './customer.service';
 
 @Component({
     selector: 'customer-list',
-    template: `
-    <ul>
-     <li>list1</li>
-     <li>list2</li>
-    </ul>
-    
-    `
+    templateUrl: 'app/customer-list.component.html',
+    providers: [CustomerService]
 })
 
 export class CustomerListComponent implements OnInit {
+    customers: any;
+    constructor(private _customerService: CustomerService) { }
 
-    constructor() { }
-
-    ngOnInit() { }
+    ngOnInit() {
+        this._customerService.getCustomers().subscribe(customers => this.customers = customers);
+        
+     }
 }
